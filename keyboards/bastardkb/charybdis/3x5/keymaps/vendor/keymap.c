@@ -213,6 +213,10 @@ static uint16_t auto_pointer_layer_timer = 0;
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
+enum custom_keycodes {
+    CB_GAMING = SAFE_RANGE,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(
     POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
@@ -228,10 +232,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // --- Combo definitions for toggling GAMING layer ---
 // Combo: Z (KC_Z) + / (KC_SLSH)
-enum custom_keycodes {
-    CB_GAMING = SAFE_RANGE,
-};
-
 const uint16_t PROGMEM gaming_combo[] = {KC_Z, KC_SLSH, COMBO_END};
 
 combo_t key_combos[] = {
