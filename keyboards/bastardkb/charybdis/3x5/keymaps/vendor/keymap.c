@@ -33,8 +33,8 @@ enum charybdis_keymap_layers {
     LAYER_GAMING, // = 7 (your 8th layer)
 };
 
-enum custom_keycodes {
-    CB_GAMING = SAFE_RANGE,
+enum combos {
+    COMBO_GAMING_TOGGLE
 };
 
 // Automatically enable sniping-mode on the pointer layer.
@@ -217,8 +217,11 @@ static uint16_t auto_pointer_layer_timer = 0;
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
-// ----- KEYMAPS ------
+// --- Combo definitions for toggling GAMING layer ---
+// Combo: Z (KC_Z) + / (KC_SLSH)
+const uint16_t PROGMEM gaming_combo[] = {KC_Z, KC_SLSH, COMBO_END};
 
+// ----- KEYMAPS ------
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(
     POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_BASE))
@@ -232,12 +235,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_GAMING] = LAYOUT_wrapper(LAYOUT_LAYER_GAMING),
 };
 
-// --- Combo definitions for toggling GAMING layer ---
-// Combo: Z (KC_Z) + / (KC_SLSH)
-const uint16_t PROGMEM gaming_combo[] = {KC_Z, KC_SLSH, COMBO_END};
-
 combo_t key_combos[] = {
-    COMBO(gaming_combo, CB_GAMING),
+    = COMBO(gaming_combo, TG(LAYER_GAMING)),
 };
 
 // Track GAMING layer toggle state
