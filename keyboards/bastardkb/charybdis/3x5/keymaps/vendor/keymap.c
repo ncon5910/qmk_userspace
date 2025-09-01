@@ -223,7 +223,7 @@ const uint16_t PROGMEM gaming_toggle_combo = {KC_Z, KC_SLSH, COMBO_END};
 
 // Define the list of all combos and their actions.
 combo_t key_combos = {
-    = COMBO(gaming_toggle_combo, TG(_GAMING)),
+    = COMBO(gaming_toggle_combo, TG(LAYER_GAMING)),
 };
 
 // ----- KEYMAPS ------
