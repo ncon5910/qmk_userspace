@@ -217,9 +217,14 @@ static uint16_t auto_pointer_layer_timer = 0;
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
-// --- Combo definitions for toggling GAMING layer ---
-// Combo: Z (KC_Z) + / (KC_SLSH)
-const uint16_t PROGMEM gaming_combo[] = {KC_Z, KC_SLSH, COMBO_END};
+// Define the sequence of keys for the gaming layer toggle combo.
+// The user must press Z and / simultaneously.
+const uint16_t PROGMEM gaming_toggle_combo = {KC_Z, KC_SLSH, COMBO_END};
+
+// Define the list of all combos and their actions.
+combo_t key_combos = {
+    = COMBO(gaming_toggle_combo, TG(_GAMING)),
+};
 
 // ----- KEYMAPS ------
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -233,27 +238,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
   [LAYER_GAMING] = LAYOUT_wrapper(LAYOUT_LAYER_GAMING),
-};
-
-combo_t key_combos[] = {
-    COMBO(gaming_combo, TG(LAYER_GAMING)),
-};
-
-// Track GAMING layer toggle state
-static bool gaming_layer_on = false;
-
-// Custom process_combo_event for toggling layer
-bool process_combo_event(uint16_t combo_index, bool pressed) {
-    if (combo_index == 0 && pressed) {
-        if (!gaming_layer_on) {
-            layer_on(LAYER_GAMING);
-            gaming_layer_on = true;
-        } else {
-            layer_off(LAYER_GAMING);
-            gaming_layer_on = false;
-        }
-    }
-    return true;
 };
 
 // clang-format on
