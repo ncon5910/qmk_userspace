@@ -236,7 +236,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 combo_t key_combos[] = {
-    = COMBO(gaming_combo, TG(LAYER_GAMING)),
+    COMBO(gaming_combo, TG(LAYER_GAMING)),
 };
 
 // Track GAMING layer toggle state
