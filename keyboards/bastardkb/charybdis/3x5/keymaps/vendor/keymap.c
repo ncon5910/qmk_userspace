@@ -33,6 +33,10 @@ enum charybdis_keymap_layers {
     LAYER_GAMING, // = 7 (your 8th layer)
 };
 
+enum custom_keycodes {
+    CB_GAMING = SAFE_RANGE,
+};
+
 // Automatically enable sniping-mode on the pointer layer.
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER
 
@@ -213,9 +217,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
-enum custom_keycodes {
-    CB_GAMING = SAFE_RANGE,
-};
+// ----- KEYMAPS ------
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT_wrapper(
