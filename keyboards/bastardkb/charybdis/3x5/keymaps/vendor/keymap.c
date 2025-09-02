@@ -219,11 +219,11 @@ static uint16_t auto_pointer_layer_timer = 0;
 
 // Define the sequence of keys for the gaming layer toggle combo.
 // The user must press Z and / simultaneously.
-const uint16_t PROGMEM gaming_toggle_combo = {KC_Z, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM gaming_toggle_combo[] = {KC_X, KC_DOT, COMBO_END};
 
 // Define the list of all combos and their actions.
-combo_t key_combos = {
-    = COMBO(gaming_toggle_combo, TG(LAYER_GAMING)),
+combo_t key_combos[COMBO_COUNT] = {
+    [COMBO_GAMING_TOGGLE] = COMBO(gaming_toggle_combo, TG(LAYER_GAMING)),
 };
 
 // ----- KEYMAPS ------
