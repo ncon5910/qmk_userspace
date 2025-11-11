@@ -31,10 +31,12 @@ enum charybdis_keymap_layers {
     LAYER_POINTER,
     LAYER_NUMERAL,
     LAYER_SYMBOLS,
+    LAYER_GRAPHITE,
 };
 
 enum combos {
-    COMBO_GAMING_TOGGLE
+    COMBO_GAMING_TOGGLE,
+    COMBO_GRAPHITE_TOGGLE
 };
 
 // Automatically enable sniping-mode on the pointer layer.
@@ -169,6 +171,23 @@ static uint16_t auto_pointer_layer_timer = 0;
        LT(LAYER_POINTER, KC_Z),    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, LT(LAYER_POINTER, KC_SLSH), \
                       KC_ESC, KC_SPC, KC_TAB, KC_ENT, KC_BSPC
 
+/**
+ * \brief Graphite layout layer.
+ *
+ * Graphite alpha key layout for learning the Graphite keyboard layout.
+ * Uses same home row mods and pointer mods as base layer for consistency.
+ * Thumb keys are transparent to allow access to other layers.
+ * 
+ * NOTE: Replace the alpha keys below with the actual Graphite layout positions.
+ * Graphite layout key positions need to be mapped from QWERTY positions.
+ * Current keys are placeholders - update with Graphite alpha positions.
+ */
+#define LAYOUT_LAYER_GRAPHITE                                                                    \
+       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, \
+       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT, \
+       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
+                      _______, _______, _______, _______, _______
+
 
 /**
  * \brief Add Home Row mod to a layout.
@@ -218,12 +237,17 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
 // Define the sequence of keys for the gaming layer toggle combo.
-// The user must press Z and / simultaneously.
+// The user must press X and . simultaneously.
 const uint16_t PROGMEM gaming_toggle_combo[] = {KC_X, KC_DOT, COMBO_END};
+
+// Define the sequence of keys for the Graphite layer toggle combo.
+// The user must press Q and P simultaneously.
+const uint16_t PROGMEM graphite_toggle_combo[] = {KC_Q, KC_P, COMBO_END};
 
 // Define the list of all combos and their actions.
 combo_t key_combos[COMBO_COUNT] = {
     [COMBO_GAMING_TOGGLE] = COMBO(gaming_toggle_combo, TG(LAYER_GAMING)),
+    [COMBO_GRAPHITE_TOGGLE] = COMBO(graphite_toggle_combo, TG(LAYER_GRAPHITE)),
 };
 
 // ----- KEYMAPS ------
@@ -238,6 +262,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_POINTER] = LAYOUT_wrapper(LAYOUT_LAYER_POINTER),
   [LAYER_NUMERAL] = LAYOUT_wrapper(LAYOUT_LAYER_NUMERAL),
   [LAYER_SYMBOLS] = LAYOUT_wrapper(LAYOUT_LAYER_SYMBOLS),
+  [LAYER_GRAPHITE] = LAYOUT_wrapper(
+    POINTER_MOD(HOME_ROW_MOD_GACS(LAYOUT_LAYER_GRAPHITE))
+  ),
   
 };
 

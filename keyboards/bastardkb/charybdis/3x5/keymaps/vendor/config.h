@@ -18,7 +18,7 @@
 
 #ifdef VIA_ENABLE
 /* VIA configuration. */
-#    define DYNAMIC_KEYMAP_LAYER_COUNT 8
+#    define DYNAMIC_KEYMAP_LAYER_COUNT 9
 #endif // VIA_ENABLE
 
 #ifndef __arm__
@@ -36,4 +36,5 @@
 #endif // POINTING_DEVICE_ENABLE
 
 /* Combo configuration */
-#define COMBO_COUNT 1
+#define COMBO_COUNT 2
+#define COMBO_TERM 50
