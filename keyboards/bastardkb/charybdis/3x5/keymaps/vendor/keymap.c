@@ -178,14 +178,15 @@ static uint16_t auto_pointer_layer_timer = 0;
  * Uses same home row mods and pointer mods as base layer for consistency.
  * Thumb keys are transparent to allow access to other layers.
  * 
- * NOTE: Replace the alpha keys below with the actual Graphite layout positions.
- * Graphite layout key positions need to be mapped from QWERTY positions.
- * Current keys are placeholders - update with Graphite alpha positions.
+ * Graphite layout mapping:
+ * Top row:    B L D W Z _ F O U J : + |
+ * Home row:   N R T S G Y H A E I ?
+ * Bottom row: Q X M C V K P > " <
  */
 #define LAYOUT_LAYER_GRAPHITE                                                                    \
-       KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, \
-       KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT, \
-       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
+       KC_B,    KC_L,    KC_D,    KC_W,    KC_Z, KC_QUOT,    KC_F,    KC_O,    KC_U, KC_J, \
+       KC_N,    KC_R,    KC_T,    KC_S,    KC_G,    KC_Y,    KC_H,    KC_A,    KC_E, KC_I, \
+       KC_Q,    KC_X,    KC_M,    KC_C,    KC_V,    KC_K,    KC_P,  KC_DOT, KC_MINS,  KC_SLSH, \
                       _______, _______, _______, _______, _______
 
 
@@ -237,8 +238,8 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
 // Define the sequence of keys for the gaming layer toggle combo.
-// The user must press X and . simultaneously.
-const uint16_t PROGMEM gaming_toggle_combo[] = {KC_X, KC_DOT, COMBO_END};
+// The user must press Q and B simultaneously.
+const uint16_t PROGMEM gaming_toggle_combo[] = {KC_Q, KC_B, COMBO_END};
 
 // Define the sequence of keys for the Graphite layer toggle combo.
 // The user must press Q and P simultaneously.
