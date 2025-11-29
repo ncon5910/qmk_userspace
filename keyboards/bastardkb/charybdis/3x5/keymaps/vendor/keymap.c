@@ -242,8 +242,8 @@ static uint16_t auto_pointer_layer_timer = 0;
 const uint16_t PROGMEM gaming_toggle_combo[] = {KC_Q, KC_B, COMBO_END};
 
 // Define the sequence of keys for the Graphite layer toggle combo.
-// The user must press Q and P simultaneously.
-const uint16_t PROGMEM graphite_toggle_combo[] = {KC_Q, KC_P, COMBO_END};
+// The user must press X and P simultaneously.
+const uint16_t PROGMEM graphite_toggle_combo[] = {KC_X, KC_P, COMBO_END};
 
 // Define the list of all combos and their actions.
 combo_t key_combos[COMBO_COUNT] = {
